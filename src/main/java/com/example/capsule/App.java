@@ -1,11 +1,11 @@
-package com.example.capsule;
+﻿package com.example.capsule;
 
-import io.gemboot.GembootConfig;
-import io.gemboot.GembootServer;
+import io.github.wallawood.WallawoodConfig;
+import io.github.wallawood.WallawoodServer;
 
 public class App {
     public static void main(String[] args) {
-        var config = GembootConfig.fromProperties();
-        GembootServer.start(App.class, config);
+        var config = WallawoodConfig.fromProperties();
+        WallawoodServer.start(App.class, config);
     }
 }

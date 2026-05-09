@@ -1,9 +1,9 @@
-package com.example.capsule.context;
+﻿package com.example.capsule.context;
 
-import io.gemboot.GeminiResponse;
-import io.gemboot.RequestContext;
-import io.gemboot.RequestInterceptor;
-import io.gemboot.annotations.Preprocessor;
+import io.github.wallawood.GeminiResponse;
+import io.github.wallawood.RequestContext;
+import io.github.wallawood.RequestInterceptor;
+import io.github.wallawood.annotations.Preprocessor;
 
 import java.time.Instant;
 import java.util.Optional;

@@ -1,9 +1,9 @@
-package com.example.capsule.context;
+﻿package com.example.capsule.context;
 
-import io.gemboot.annotations.Context;
-import io.gemboot.annotations.GeminiController;
-import io.gemboot.annotations.Path;
-import io.gemboot.GeminiResponse;
+import io.github.wallawood.annotations.Context;
+import io.github.wallawood.annotations.GeminiController;
+import io.github.wallawood.annotations.Path;
+import io.github.wallawood.GeminiResponse;
 
 @GeminiController
 public class ServerInfoController {
@@ -21,10 +21,10 @@ public class ServerInfoController {
                 + "This page exists because a @Preprocessor injects a ServerInfo object\n"
                 + "into every request's context. The controller just asks for it with @Context.\n"
                 + "It's custom plumbing, not protocol plumbing.\n\n"
-                + "=> /whoami 🪪 Who am I? (your certificate)\n"
-                + "=> / ← Home\n\n"
+                + "=> /whoami ðŸªª Who am I? (your certificate)\n"
+                + "=> / â† Home\n\n"
                 + "---\n"
-                + "📂 Source: context/ServerInfoController.java — demos @Context with a custom object.\n"
-                + "📂 The ServerInfo is added by context/ContextPreprocessor.java — a @Preprocessor that enriches every request.\n");
+                + "ðŸ“‚ Source: context/ServerInfoController.java â€” demos @Context with a custom object.\n"
+                + "ðŸ“‚ The ServerInfo is added by context/ContextPreprocessor.java â€” a @Preprocessor that enriches every request.\n");
     }
 }

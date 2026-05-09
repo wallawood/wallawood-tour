@@ -1,10 +1,10 @@
-package com.example.capsule.routing;
+﻿package com.example.capsule.routing;
 
-import io.gemboot.annotations.DefaultValue;
-import io.gemboot.annotations.Path;
-import io.gemboot.annotations.QueryParam;
-import io.gemboot.GeminiResponse;
-import io.gemboot.annotations.GeminiController;
+import io.github.wallawood.annotations.DefaultValue;
+import io.github.wallawood.annotations.Path;
+import io.github.wallawood.annotations.QueryParam;
+import io.github.wallawood.GeminiResponse;
+import io.github.wallawood.annotations.GeminiController;
 
 import java.util.List;
 
@@ -29,9 +29,9 @@ public class DictionaryController {
         } else {
             matches.forEach(word -> sb.append("* ").append(word).append("\n"));
         }
-        sb.append("\n=> / ← Home\n\n");
+        sb.append("\n=> / â† Home\n\n");
         sb.append("---\n");
-        sb.append("📂 Source: routing/DictionaryController.java — demos @QueryParam and @DefaultValue.\n");
+        sb.append("ðŸ“‚ Source: routing/DictionaryController.java â€” demos @QueryParam and @DefaultValue.\n");
         sb.append("Try editing the URL: /dictionary?search=star or /dictionary?search=co\n");
         return GeminiResponse.success(sb.toString());
     }

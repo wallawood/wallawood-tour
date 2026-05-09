@@ -1,6 +1,6 @@
 # 🚀 Gemini Capsule Demo
 
-A tour of the gemboot library.
+A tour of the wallawood library.
 
 ## Static Content
 => /contact Contact page (classpath:/static)
@@ -28,5 +28,5 @@ A tour of the gemboot library.
 => /chaos Custom exception caught by @GeminiExceptionHandler
 
 ---
-📂 See application.properties for gemboot.static.directories config.
+📂 See application.properties for wallawood.static.directories config.
 📂 See application.properties.sample for all configurable properties.

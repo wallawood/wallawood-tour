@@ -1,11 +1,11 @@
-package com.example.capsule.security;
+﻿package com.example.capsule.security;
 
-import io.gemboot.CertUtil;
-import io.gemboot.Grant;
-import io.gemboot.GeminiResponse;
-import io.gemboot.RequestContext;
-import io.gemboot.RequestInterceptor;
-import io.gemboot.annotations.Preprocessor;
+import io.github.wallawood.CertUtil;
+import io.github.wallawood.Grant;
+import io.github.wallawood.GeminiResponse;
+import io.github.wallawood.RequestContext;
+import io.github.wallawood.RequestInterceptor;
+import io.github.wallawood.annotations.Preprocessor;
 
 import java.security.cert.X509Certificate;
 import java.util.Optional;

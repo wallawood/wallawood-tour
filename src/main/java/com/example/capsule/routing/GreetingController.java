@@ -1,9 +1,9 @@
-package com.example.capsule.routing;
+﻿package com.example.capsule.routing;
 
-import io.gemboot.annotations.QueryString;
-import io.gemboot.annotations.Path;
-import io.gemboot.GeminiResponse;
-import io.gemboot.annotations.GeminiController;
+import io.github.wallawood.annotations.QueryString;
+import io.github.wallawood.annotations.Path;
+import io.github.wallawood.GeminiResponse;
+import io.github.wallawood.annotations.GeminiController;
 
 @GeminiController
 public class GreetingController {
@@ -13,8 +13,8 @@ public class GreetingController {
         return GeminiResponse.success(
                 "# Greeting\n\n"
                 + "Hello, " + name + "\n\n"
-                + "=> / ← Home\n\n"
+                + "=> / â† Home\n\n"
                 + "---\n"
-                + "📂 Source: routing/GreetingController.java — demos @QueryParam for named parameters.\n");
+                + "ðŸ“‚ Source: routing/GreetingController.java â€” demos @QueryParam for named parameters.\n");
     }
 }

@@ -1,11 +1,11 @@
-package com.example.capsule.context;
+﻿package com.example.capsule.context;
 
-import io.gemboot.CertUtil;
-import io.gemboot.annotations.Path;
-import io.gemboot.annotations.Context;
-import io.gemboot.GeminiResponse;
-import io.gemboot.annotations.GeminiController;
-import io.gemboot.annotations.RequireCertificate;
+import io.github.wallawood.CertUtil;
+import io.github.wallawood.annotations.Path;
+import io.github.wallawood.annotations.Context;
+import io.github.wallawood.GeminiResponse;
+import io.github.wallawood.annotations.GeminiController;
+import io.github.wallawood.annotations.RequireCertificate;
 
 import java.net.URI;
 import java.security.cert.X509Certificate;
@@ -30,8 +30,8 @@ public class CertificateController {
                 + "Subject Name: " + name + "\n"
                 + "Unique ID: " + id + "\n"
                 + "Issuer Name: " + issuer + "\n\n"
-                + "=> / ← Home\n\n"
+                + "=> / â† Home\n\n"
                 + "---\n"
-                + "📂 Source: context/CertificateController.java — demos @Context with X509Certificate and URI.\n");
+                + "ðŸ“‚ Source: context/CertificateController.java â€” demos @Context with X509Certificate and URI.\n");
     }
 }
