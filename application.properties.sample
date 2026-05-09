@@ -1,0 +1,23 @@
+# Gemboot — all configurable properties with their defaults.
+# Copy this file to application.properties and adjust as needed.
+
+# Server hostname for TLS SNI and auto-generated certificate CN.
+# gemboot.hostname=localhost
+
+# Address to bind the server socket to.
+# gemboot.bind-address=0.0.0.0
+
+# Listening port (Gemini default is 1965).
+# gemboot.port=1965
+
+# Path to a PEM certificate file. If set, gemboot.key.path must also be set.
+# When omitted, a self-signed certificate is auto-generated.
+# gemboot.cert.path=gemini-certs/cert.pem
+
+# Path to a PEM private key file. Required when gemboot.cert.path is set.
+# gemboot.key.path=gemini-certs/key.pem
+
+# Additional static resource directories, comma-separated.
+# classpath:/static is always searched first (built-in).
+# Use classpath: for resources inside the jar, file: for filesystem paths.
+# gemboot.static.directories=classpath:/public,file:./content

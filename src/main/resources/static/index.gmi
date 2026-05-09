@@ -1,0 +1,32 @@
+# 🚀 Gemini Capsule Demo
+
+A tour of the gemboot library.
+
+## Static Content
+=> /contact Contact page (classpath:/static)
+=> /pets Pet directory (three directories in action)
+
+## Routing — routing/ package
+=> /counter Hit counter (@Path, shared state)
+=> /greet?World Greeting (@QueryString)
+=> /dictionary?search= Word search (@QueryParam, @DefaultValue)
+=> /user/42 User profile (@PathParam, @QueryString, @RequireInput)
+
+## Request Context — context/ package
+=> /whoami Certificate + request URI (@Context, @RequireCertificate)
+=> /whoareyou Server info — custom @Context object via @Preprocessor
+
+## Security — security/ package
+=> /grant The Magic Object and Authority Pattern (Grant, @Authorized)
+=> /guard Guard Pattern (URI, Grant, @RequireAuthorized)
+=> /clearance User, Moderator, Admin (@RequireClearance)
+=> /scopes Read, Write, Delete (@RequireScopes)
+=> /and-logic Stacking annotations (@RequireAuthorized, @RequireClearance, @RequireScopes)
+=> /complex Custom security using Authorization and Guard Pattern (Authorization, Grant, Preprocessor)
+
+## Error Handling — errors/ package
+=> /chaos Custom exception caught by @GeminiExceptionHandler
+
+---
+📂 See application.properties for gemboot.static.directories config.
+📂 See application.properties.sample for all configurable properties.

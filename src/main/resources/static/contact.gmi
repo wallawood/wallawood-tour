@@ -1,0 +1,8 @@
+# 📬 Contact
+
+Send a pigeon to 127.0.0.1, port 1965.
+
+=> / ← Home
+
+---
+📂 Source: src/main/resources/static/contact.gmi — served via the built-in classpath:/static.

@@ -1,0 +1,11 @@
+# 🐶 Dog
+
+Name: Barkley von Woofenstein
+Favorite protocol: Gemini (fetches pages reliably)
+I live in an extra classpath directory. More room to run!
+
+=> /pets ← Pets
+=> / ← Home
+
+---
+📂 Source: src/main/resources/public/pets/dog.gmi — served via classpath:/public.

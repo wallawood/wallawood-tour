@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.gemboot:gemboot:0.1.0-SNAPSHOT'
+    implementation 'ch.qos.logback:logback-classic:1.5.3'
+}
+
+application {
+    mainClass = 'com.example.capsule.App'
+}

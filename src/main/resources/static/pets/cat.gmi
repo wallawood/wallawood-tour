@@ -1,0 +1,11 @@
+# 🐱 Cat
+
+Name: Sir Whiskers McFluffington III
+Favorite protocol: Gemini
+I live in the default static directory. It's cozy in here.
+
+=> /pets ← Pets
+=> / ← Home
+
+---
+📂 Source: src/main/resources/static/pets/cat.gmi — served via the built-in classpath:/static.

@@ -1,0 +1,12 @@
+# 🐾 Pets
+
+You reached /pets — resolved to pets/index.gmi automatically.
+
+=> /pets/cat 🐱 Cat
+=> /pets/dog 🐶 Dog
+=> /pets/fish 🐟 Fish
+=> / ← Home
+
+---
+📂 Source: src/main/resources/static/pets/index.gmi — the built-in classpath:/static directory.
+Each pet lives in a different static directory to show how gemboot.static.directories works.

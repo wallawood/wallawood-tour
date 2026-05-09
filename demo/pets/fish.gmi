@@ -1,0 +1,11 @@
+# 🐟 Fish
+
+Name: Gill McBubbles
+Favorite protocol: Gemini (swims through the net)
+My fish bowl is not on the classpath, but that works for me!
+
+=> /pets ← Pets
+=> / ← Home
+
+---
+📂 Source: demo/pets/fish.gmi — served via file:./demo.
