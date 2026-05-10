@@ -1,4 +1,4 @@
-﻿package com.example.capsule.context;
+package com.example.capsule.context;
 
 import io.github.wallawood.annotations.Context;
 import io.github.wallawood.annotations.GeminiController;

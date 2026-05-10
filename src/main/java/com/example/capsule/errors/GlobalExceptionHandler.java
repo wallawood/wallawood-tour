@@ -1,4 +1,4 @@
-﻿package com.example.capsule.errors;
+package com.example.capsule.errors;
 
 import io.github.wallawood.GeminiResponse;
 import io.github.wallawood.annotations.GeminiExceptionHandler;

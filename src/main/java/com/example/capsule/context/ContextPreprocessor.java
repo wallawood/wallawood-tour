@@ -1,4 +1,4 @@
-﻿package com.example.capsule.context;
+package com.example.capsule.context;
 
 import io.github.wallawood.GeminiResponse;
 import io.github.wallawood.RequestContext;

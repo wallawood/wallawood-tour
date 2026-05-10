@@ -1,4 +1,4 @@
-﻿package com.example.capsule.security;
+package com.example.capsule.security;
 
 import io.github.wallawood.Authorization;
 import io.github.wallawood.GeminiResponse;

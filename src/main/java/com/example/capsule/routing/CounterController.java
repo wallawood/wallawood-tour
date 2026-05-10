@@ -1,4 +1,4 @@
-﻿package com.example.capsule.routing;
+package com.example.capsule.routing;
 
 import io.github.wallawood.annotations.Path;
 import io.github.wallawood.GeminiResponse;

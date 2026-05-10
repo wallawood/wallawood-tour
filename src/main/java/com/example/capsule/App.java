@@ -1,4 +1,4 @@
-﻿package com.example.capsule;
+package com.example.capsule;
 
 import io.github.wallawood.WallawoodConfig;
 import io.github.wallawood.WallawoodServer;
