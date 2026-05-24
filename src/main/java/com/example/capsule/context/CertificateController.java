@@ -17,7 +17,7 @@ public class CertificateController {
     @RequireCertificate("Your attendance is requested.")
     public GeminiResponse showCertificate(@Context URI uri, @Context X509Certificate cert) {
 
-        String name = CertUtil.cn(cert);
+        String name = CertUtil.name(cert);
         String id = CertUtil.fingerprint(cert);
         String issuer = cert.getIssuerX500Principal().getName().replaceFirst("^CN=", "");
 

@@ -20,8 +20,8 @@ public class Authority1 implements RequestInterceptor {
             return Optional.empty();
         }
 
-        String cn = CertUtil.cn(cert).toLowerCase();
-        Grant grant = Grant.none();
+        String cn = CertUtil.name(cert).toLowerCase();
+        Grant grant = Grant.deny();
 
         if (cn.equalsIgnoreCase("a")) {
             grant = Grant.authorized();

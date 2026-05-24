@@ -23,7 +23,7 @@ public class Authority2 implements RequestInterceptor {
             return Optional.empty();
         }
 
-        String cn = CertUtil.cn(cert).toLowerCase();
+        String cn = CertUtil.name(cert).toLowerCase();
         Grant.Builder builder = Grant.builder();
 
         if (cn.contains("a")) {
