@@ -15,10 +15,10 @@ public class UserController {
     public GeminiResponse showProfile(@PathParam("id") int id, @QueryString String name) {
         return GeminiResponse.success(
                 "# User Profile\n\n"
-                + "ID: " + id + " (@PathParam)\n"
-                + "Name: " + name + " (@QueryString)\n\n"
-                + "=> / â† Home\n\n"
-                + "---\n"
-                + "ðŸ“‚ Source: routing/UserController.java â€” demos @PathParam, @QueryString, and @RequireInput.\n");
+                        + "ID: " + id + " (@PathParam)\n"
+                        + "Name: " + name + " (@QueryString)\n\n"
+                        + "=> / Home\n\n"
+                        + "---\n"
+                        + "Source: routing/UserController.java -- demos @PathParam, @QueryString, and @RequireInput.\n");
     }
 }

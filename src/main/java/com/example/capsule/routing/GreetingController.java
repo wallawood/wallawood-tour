@@ -12,9 +12,9 @@ public class GreetingController {
     public GeminiResponse greet(@QueryString String name) {
         return GeminiResponse.success(
                 "# Greeting\n\n"
-                + "Hello, " + name + "\n\n"
-                + "=> / â† Home\n\n"
-                + "---\n"
-                + "ðŸ“‚ Source: routing/GreetingController.java â€” demos @QueryParam for named parameters.\n");
+                        + "Hello, " + name + "\n\n"
+                        + "=> / Home\n\n"
+                        + "---\n"
+                        + "Source: routing/GreetingController.java -- demos @QueryParam for named parameters.\n");
     }
 }

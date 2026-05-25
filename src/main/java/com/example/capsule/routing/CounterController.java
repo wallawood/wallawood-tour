@@ -16,8 +16,8 @@ public class CounterController {
         int n = hits.incrementAndGet();
         return GeminiResponse.success(
                 "# Hit Counter\n\nVisit #" + n + "\n\n"
-                + "=> /counter Again\n=> / â† Home\n\n"
-                + "---\n"
-                + "ðŸ“‚ Source: routing/CounterController.java â€” demos @Path and shared controller state.\n");
+                        + "=> /counter Again\n=> / Home\n\n"
+                        + "---\n"
+                        + "Source: routing/CounterController.java -- demos @Path and shared controller state.\n");
     }
 }

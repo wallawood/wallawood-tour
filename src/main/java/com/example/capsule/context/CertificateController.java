@@ -23,15 +23,15 @@ public class CertificateController {
 
         return GeminiResponse.success(
                 "# Who Am I?\n\n"
-                + "## Your Request\n"
-                + "URI: " + uri + "\n"
-                + "Path: " + uri.getPath() + "\n\n"
-                + "## Your Certificate\n"
-                + "Subject Name: " + name + "\n"
-                + "Unique ID: " + id + "\n"
-                + "Issuer Name: " + issuer + "\n\n"
-                + "=> / â† Home\n\n"
-                + "---\n"
-                + "ðŸ“‚ Source: context/CertificateController.java â€” demos @Context with X509Certificate and URI.\n");
+                        + "## Your Request\n"
+                        + "URI: " + uri + "\n"
+                        + "Path: " + uri.getPath() + "\n\n"
+                        + "## Your Certificate\n"
+                        + "Subject Name: " + name + "\n"
+                        + "Unique ID: " + id + "\n"
+                        + "Issuer Name: " + issuer + "\n\n"
+                        + "=> / Home\n\n"
+                        + "---\n"
+                        + "Source: context/CertificateController.java -- demos @Context with X509Certificate and URI.\n");
     }
 }

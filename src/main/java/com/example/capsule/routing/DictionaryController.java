@@ -29,9 +29,9 @@ public class DictionaryController {
         } else {
             matches.forEach(word -> sb.append("* ").append(word).append("\n"));
         }
-        sb.append("\n=> / â† Home\n\n");
+        sb.append("\n=> / Home\n\n");
         sb.append("---\n");
-        sb.append("ðŸ“‚ Source: routing/DictionaryController.java â€” demos @QueryParam and @DefaultValue.\n");
+        sb.append("Source: routing/DictionaryController.java -- demos @QueryParam and @DefaultValue.\n");
         sb.append("Try editing the URL: /dictionary?search=star or /dictionary?search=co\n");
         return GeminiResponse.success(sb.toString());
     }

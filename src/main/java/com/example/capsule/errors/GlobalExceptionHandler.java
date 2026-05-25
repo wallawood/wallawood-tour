@@ -8,17 +8,17 @@ public class GlobalExceptionHandler {
 
     public GeminiResponse handle(ExistentialDreadException e) {
         return GeminiResponse.success(
-                "# ðŸŽª Caught!\n\n"
-                + "The handler threw: " + e.getMessage() + "\n\n"
-                + "But the @GeminiExceptionHandler turned it into this page.\n\n"
-                + "=> /chaos Again\n=> / â† Home\n\n"
-                + "---\n"
-                + "ðŸ“‚ Source: errors/GlobalExceptionHandler.java â€” demos @GeminiExceptionHandler.\n");
+                "# [!] Caught!\n\n"
+                        + "The handler threw: " + e.getMessage() + "\n\n"
+                        + "But the @GeminiExceptionHandler turned it into this page.\n\n"
+                        + "=> /chaos Again\n=> / Home\n\n"
+                        + "---\n"
+                        + "Source: errors/GlobalExceptionHandler.java -- demos @GeminiExceptionHandler.\n");
     }
 
     public GeminiResponse handle(Exception e) {
         return GeminiResponse.success(
                 "# Something broke\n\n" + e.getClass().getSimpleName() + ": " + e.getMessage()
-                + "\n\n=> / â† Home\n");
+                        + "\n\n=> / Home\n");
     }
 }
