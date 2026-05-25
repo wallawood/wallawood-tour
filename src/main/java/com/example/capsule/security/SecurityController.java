@@ -20,7 +20,7 @@ public class SecurityController {
         @RequireAuthorized(message = "Put 'a' in your certificate CN to access this page.")
         public GeminiResponse grant(@Context Grant grant) {
                 return GeminiResponse.success(
-                                "# The Magic Object and Authority2 Pattern\n\n"
+                                "# The Grant Object\n\n"
                                                 + "A Grant is what the framework checks when you protect a route.\n"
                                                 + "It answers: \"What permissions does this visitor have?\"\n\n"
                                                 + "## The Pattern\n"
@@ -65,7 +65,7 @@ public class SecurityController {
         @Path("/guard")
         @RequireCertificate("Present a certificate to learn about Guards.")
         public GeminiResponse guard(@Context Grant grant) {
-                String status = grant.isAuthorized() ? "[ok] You ARE authorized" : "??? You are NOT authorized";
+                String status = grant.isAuthorized() ? "[ok] You ARE authorized" : "[--] You are NOT authorized";
                 return GeminiResponse.success(
                                 "# Guard Pattern\n\n"
                                                 + "A Guard is an annotation that blocks a request if the Grant\n"
@@ -83,8 +83,8 @@ public class SecurityController {
                                                 + "## Your status\n"
                                                 + status + "\n\n"
                                                 + "Try it:\n"
-                                                + "=> /guard/try [door] Enter the guarded room (needs 'a' in CN)\n\n"
-                                                + "=> /grant ?? The Magic Object\n"
+                                                + "=> /guard/try [enter] Enter the guarded room (needs 'a' in CN)\n\n"
+                                                + "=> /grant The Grant Object\n"
                                                 + "=> /clearance Next: Clearance Levels ->\n"
                                                 + "=> / Home\n");
         }
@@ -111,12 +111,12 @@ public class SecurityController {
                                                 + "## Your level: " + grant.level() + "\n\n"
                                                 + "Try these doors:\n"
                                                 + "=> /clearance/user [user] User area (level >= 1)\n"
-                                                + "=> /clearance/mod [shield]?? Moderator area (level >= 2)\n"
+                                                + "=> /clearance/mod [shield] Moderator area (level >= 2)\n"
                                                 + "=> /clearance/admin [admin] Admin area (level >= 3) -- needs 'c' in CN\n\n"
                                                 + "## Key point\n"
                                                 + "Clearance does NOT imply @RequireAuthorized, and vice versa.\n"
                                                 + "They are separate dimensions. Stack both if you need both.\n\n"
-                                                + "=> /guard ?? Guard Pattern\n"
+                                                + "=> /guard Guard Pattern\n"
                                                 + "=> /scopes Next: Scopes ->\n"
                                                 + "=> / Home\n");
         }
@@ -125,9 +125,9 @@ public class SecurityController {
         @RequireAuthorized(message = "Put 'a' in your certificate CN to pass.")
         public GeminiResponse guardTry() {
                 return GeminiResponse.success(
-                                "# [door] You're in!\n\n"
+                                "# [enter] You're in!\n\n"
                                                 + "@RequireAuthorized passed. Your grant has isAuthorized() = true.\n\n"
-                                                + "=> /guard ?? Guard Pattern\n");
+                                                + "=> /guard Guard Pattern\n");
         }
 
         @Path("/clearance/user")
@@ -136,16 +136,16 @@ public class SecurityController {
                 return GeminiResponse.success(
                                 "# [user] User Area\n\n"
                                                 + "@RequireClearance(level = 1) -- you passed.\n\n"
-                                                + "=> /clearance ?? Clearance Levels\n");
+                                                + "=> /clearance Clearance Levels\n");
         }
 
         @Path("/clearance/mod")
         @RequireClearance(level = 2, message = "Need clearance level 2. Put 'c' in your CN.")
         public GeminiResponse clearanceMod() {
                 return GeminiResponse.success(
-                                "# [shield]?? Moderator Area\n\n"
+                                "# [shield] Moderator Area\n\n"
                                                 + "@RequireClearance(level = 2) -- you passed.\n\n"
-                                                + "=> /clearance ?? Clearance Levels\n");
+                                                + "=> /clearance Clearance Levels\n");
         }
 
         @Path("/clearance/admin")
@@ -154,7 +154,7 @@ public class SecurityController {
                 return GeminiResponse.success(
                                 "# [admin] Admin Area\n\n"
                                                 + "@RequireClearance(level = 3) -- you passed.\n\n"
-                                                + "=> /clearance ?? Clearance Levels\n");
+                                                + "=> /clearance Clearance Levels\n");
         }
 
         // === /scopes -- Read, Write, Delete ===
@@ -177,13 +177,13 @@ public class SecurityController {
                                                 + "The check: grant.scopes() must contain ALL required scopes.\n\n"
                                                 + "## Your scopes: " + grant.scopes() + "\n\n"
                                                 + "Try these:\n"
-                                                + "=> /scopes/read [book] Read (needs \"read\" scope)\n"
-                                                + "=> /scopes/write ???? Write (needs \"write\" scope)\n"
-                                                + "=> /scopes/delete [trash]?? Delete (needs \"delete\" scope) -- you don't have this!\n\n"
+                                                + "=> /scopes/read [read] Read (needs \"read\" scope)\n"
+                                                + "=> /scopes/write [write] Write (needs \"write\" scope)\n"
+                                                + "=> /scopes/delete [delete] Delete (needs \"delete\" scope) -- you don't have this!\n\n"
                                                 + "## Key point\n"
                                                 + "Scopes do NOT imply authorized or clearance.\n"
                                                 + "A user can have write permission without being 'authorized'.\n\n"
-                                                + "=> /clearance ?? Clearance Levels\n"
+                                                + "=> /clearance Clearance Levels\n"
                                                 + "=> /and-logic Next: Stacking Annotations ->\n"
                                                 + "=> / Home\n");
         }
@@ -192,27 +192,27 @@ public class SecurityController {
         @RequireScopes(scopes = "read", message = "Need 'read' scope. Put 's' in your CN.")
         public GeminiResponse scopesRead() {
                 return GeminiResponse.success(
-                                "# [book] Read Access\n\n"
+                                "# [read] Read Access\n\n"
                                                 + "@RequireScopes(scopes = \"read\") -- you passed.\n\n"
-                                                + "=> /scopes ?? Scopes\n");
+                                                + "=> /scopes Scopes\n");
         }
 
         @Path("/scopes/write")
         @RequireScopes(scopes = "write", message = "Need 'write' scope. Put 's' in your CN.")
         public GeminiResponse scopesWrite() {
                 return GeminiResponse.success(
-                                "# ???? Write Access\n\n"
+                                "# [write] Write Access\n\n"
                                                 + "@RequireScopes(scopes = \"write\") -- you passed.\n\n"
-                                                + "=> /scopes ?? Scopes\n");
+                                                + "=> /scopes Scopes\n");
         }
 
         @Path("/scopes/delete")
         @RequireScopes(scopes = "delete", message = "Need 'delete' scope. Nobody has this in the demo!")
         public GeminiResponse scopesDelete() {
                 return GeminiResponse.success(
-                                "# [trash]?? Delete Access\n\n"
+                                "# [delete] Delete Access\n\n"
                                                 + "@RequireScopes(scopes = \"delete\") -- you passed. How?!\n\n"
-                                                + "=> /scopes ?? Scopes\n");
+                                                + "=> /scopes Scopes\n");
         }
 
         // === /and-logic -- Stacking annotations ===
@@ -240,8 +240,8 @@ public class SecurityController {
                                                 + "level      = " + grant.level() + "\n"
                                                 + "scopes     = " + grant.scopes() + "\n\n"
                                                 + "Try it (needs 'a' + 'c' + 's' in CN, e.g. CN=acs):\n"
-                                                + "=> /and-logic/try [wall] Enter the triple-locked room\n\n"
-                                                + "=> /scopes ?? Scopes\n"
+                                                + "=> /and-logic/try [lock] Enter the triple-locked room\n\n"
+                                                + "=> /scopes Scopes\n"
                                                 + "=> /complex Next: Custom Security ->\n"
                                                 + "=> / Home\n");
         }
@@ -252,12 +252,12 @@ public class SecurityController {
         @RequireScopes(scopes = { "read", "write" }, message = "Need read+write scopes. Put 's' in CN.")
         public GeminiResponse andLogicTry() {
                 return GeminiResponse.success(
-                                "# [wall] Triple Lock Passed!\n\n"
+                                "# [lock] Triple Lock Passed!\n\n"
                                                 + "All three annotations satisfied:\n"
                                                 + "- @RequireAuthorized [ok]\n"
                                                 + "- @RequireClearance(level = 3) [ok]\n"
                                                 + "- @RequireScopes(scopes = {\"read\", \"write\"}) [ok]\n\n"
-                                                + "=> /and-logic ?? Stacking Annotations\n");
+                                                + "=> /and-logic Stacking Annotations\n");
         }
 
         // === /complex -- Custom security with Authorization + Guard Pattern ===
@@ -303,8 +303,8 @@ public class SecurityController {
                                                 + "level      = " + grant.level() + "\n"
                                                 + "scopes     = " + grant.scopes() + "\n\n"
                                                 + "Try it (needs 'c' OR 's' in CN):\n"
-                                                + "=> /complex/or [shuffle] OR gate: clearance 3 OR write scope\n\n"
-                                                + "=> /and-logic ?? Stacking Annotations\n"
+                                                + "=> /complex/or [or] OR gate: clearance 3 OR write scope\n\n"
+                                                + "=> /and-logic Stacking Annotations\n"
                                                 + "=> / Home\n");
         }
 
@@ -312,12 +312,12 @@ public class SecurityController {
         @RequireCertificate
         public GeminiResponse complexOr() {
                 return GeminiResponse.success(
-                                "# [shuffle] OR Gate Passed!\n\n"
+                                "# [or] OR Gate Passed!\n\n"
                                                 + "The preprocessor allowed you through because you have\n"
                                                 + "clearance >= 3 OR the \"write\" scope (or both).\n\n"
                                                 + "No annotation can express this. That's why the escape hatch\n"
                                                 + "exists: plain Java in a @Preprocessor.\n\n"
-                                                + "=> /complex ?? Custom Security\n"
+                                                + "=> /complex Custom Security\n"
                                                 + "=> / Home\n");
         }
 }

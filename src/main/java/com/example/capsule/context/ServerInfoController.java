@@ -21,10 +21,10 @@ public class ServerInfoController {
                         + "This page exists because a @Preprocessor injects a ServerInfo object\n"
                         + "into every request's context. The controller just asks for it with @Context.\n"
                         + "It's custom plumbing, not protocol plumbing.\n\n"
-                        + "=> /whoami ? Who am I? (your certificate)\n"
+                        + "=> /whoami Who am I? (your certificate)\n"
                         + "=> / Home\n\n"
                         + "---\n"
                         + "Source: context/ServerInfoController.java -- demos @Context with a custom object.\n"
-                        + "[folder] The ServerInfo is added by context/ContextPreprocessor.java -- a @Preprocessor that enriches every request.\n");
+                        + "The ServerInfo is added by context/ContextPreprocessor.java -- a @Preprocessor that enriches every request.\n");
     }
 }
