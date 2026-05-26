@@ -17,12 +17,12 @@ A tour of the wallawood library.
 => /whoareyou Server info — custom @Context object via @Preprocessor
 
 ## Security — security/ package
-=> /grant The Magic Object and Authority Pattern (Grant, @Authorized)
-=> /guard Guard Pattern (URI, Grant, @RequireAuthorized)
+=> /grant The Magic Object and Authority Pattern
+=> /authorize The Simplest Grant (URI, Grant, @RequireAuthorized)
 => /clearance User, Moderator, Admin (@RequireClearance)
 => /scopes Read, Write, Delete (@RequireScopes)
 => /and-logic Stacking annotations (@RequireAuthorized, @RequireClearance, @RequireScopes)
-=> /complex Custom security using Authorization and Guard Pattern (Authorization, Grant, Preprocessor)
+=> /complex Guard Pattern (Authorization, Grant, Preprocessor)
 
 ## Error Handling — errors/ package
 => /chaos Custom exception caught by @GeminiExceptionHandler

@@ -13,65 +13,15 @@ import io.github.wallawood.annotations.RequireScopes;
 @GeminiController
 public class SecurityController {
 
-        // === /grant -- The Magic Object and Authority2 Pattern ===
-
-        @Path("/grant")
-        @RequireCertificate("Present a certificate to learn about Grants.")
-        @RequireAuthorized(message = "Put 'a' in your certificate CN to access this page.")
-        public GeminiResponse grant(@Context Grant grant) {
-                return GeminiResponse.success(
-                                "# The Grant Object\n\n"
-                                                + "A Grant is what the framework checks when you protect a route.\n"
-                                                + "It answers: \"What permissions does this visitor have?\"\n\n"
-                                                + "## The Pattern\n"
-                                                + "1. Client connects with a TLS certificate\n"
-                                                + "2. Your @Preprocessor (the Authority2) inspects the cert\n"
-                                                + "3. The Authority2 builds a Grant and adds it to the request\n"
-                                                + "4. The framework checks the Grant against your annotations\n\n"
-                                                + "## Three Dimensions (all independent)\n"
-                                                + "```\n"
-                                                + "Grant.authorized()       -> a boolean flag\n"
-                                                + "Grant.clearance(3)       -> a numeric level\n"
-                                                + "Grant.scopes(\"r\", \"w\")   -> a set of permissions\n"
-                                                + "```\n\n"
-                                                + "## Your Grant right now\n"
-                                                + "authorized = " + grant.isAuthorized() + "\n"
-                                                + "level      = " + grant.level() + "\n"
-                                                + "scopes     = " + grant.scopes() + "\n\n"
-                                                + "## The Authority2 (your @Preprocessor)\n"
-                                                + "```\n"
-                                                + "@Preprocessor(priority = 0)\n"
-                                                + "public class Authority2 implements RequestInterceptor {\n"
-                                                + "    public Optional<GeminiResponse> intercept(RequestContext ctx) {\n"
-                                                + "        X509Certificate cert = ctx.get(X509Certificate.class);\n"
-                                                + "        String cn = /* extract CN from cert */;\n"
-                                                + "        ctx.add(Grant.builder()\n"
-                                                + "            .authorized(true)\n"
-                                                + "            .clearance(3)\n"
-                                                + "            .addScope(\"read\")\n"
-                                                + "            .build());\n"
-                                                + "        return Optional.empty();\n"
-                                                + "    }\n"
-                                                + "}\n"
-                                                + "```\n\n"
-                                                + "In this demo, your cert CN controls what you get:\n"
-                                                + "  'a' -> authorized, 'c' -> clearance 3, 's' -> scopes read+write\n\n"
-                                                + "=> /guard Next: The Guard Pattern ->\n"
-                                                + "=> / Home\n");
-        }
-
-        // === /guard -- Guard Pattern ===
-
-        @Path("/guard")
-        @RequireCertificate("Present a certificate to learn about Guards.")
+        @Path("/authorize")
         public GeminiResponse guard(@Context Grant grant) {
                 String status = grant.isAuthorized() ? "[ok] You ARE authorized" : "[--] You are NOT authorized";
                 return GeminiResponse.success(
-                                "# Guard Pattern\n\n"
-                                                + "A Guard is an annotation that blocks a request if the Grant\n"
-                                                + "doesn't meet the requirement. No Grant? Blocked.\n\n"
+                                "# The Simplest Grant\n\n"
+                                                + "This Grant is a simple boolean check.\n"
+                                                + "No Grant? Blocked.\n\n"
                                                 + "## @RequireAuthorized\n"
-                                                + "The simplest guard. Checks: does grant.isAuthorized() == true?\n\n"
+                                                + "Checks: does grant.isAuthorized() == true?\n\n"
                                                 + "```\n"
                                                 + "@RequireAuthorized\n"
                                                 + "public GeminiResponse secret() { ... }\n"

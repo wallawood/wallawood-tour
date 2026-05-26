@@ -1,2 +1,99 @@
 # The Magic Object and Authority Pattern
 
+
+## The Simplest Grant
+
+You can put a special object into the request context that certain annotations can understand. 
+
+The following addition...
+```
+context.add(Grant.authorized())
+```
+...will allow that request to access any route annotated by the following:
+```
+@RequireAuthorized
+```
+
+A request without the Grant object will denied access. 
+
+The above is the simplest form of authorization. It's a simple boolean flag.
+
+
+
+## Authority Pattern
+
+This is simply a request preprocessor that specializes in issuing grants to incoming requests.
+
+## Other Types of Grants
+
+### Clearence Grant
+
+Clearence grants work the same way as security clearences. For example, if a request has a clearence level of 2, it can access any route that requires a clearence of 2 or more. 
+```
+context.add(Grant.clearence(2))
+```
+Can access an endpoint annotated like so...
+```
+@RequireClearence(level = 2)
+```
+But can NOT access an endpoint annoted with:
+```
+@RequireClearence(level = 3)
+```
+We can use this type of grant for heirarchical access.
+
+```
+public class Role {
+    public static final int GUEST = 1;
+    public static final int USER = 2;
+    public static final int MOD = 3;
+    public static final int ADMIN = 4;
+    public static final int SUPERUSER = 5;
+}
+```
+
+### Scoped Grant
+
+Scoped grants allow access to specific features by name. 
+
+```
+Grant.scopes("post:view", "post:create", "post:edit");
+```
+
+Scoped grants must have all scopes required by an endpoint to access it. For example, the above grant can access an endpoint annotated like so:
+
+```
+@RequireScopes("post:view")
+```
+
+But it cannot access an endpoint annotated like so:
+
+```
+@RequireScopes("post:view", "post:delete")
+```
+
+### Denied Grant
+
+This is a Grant that can never meet any requirements specified by any of these annotations:
+
+```
+@RequireAuthorized
+@RequireClearence
+@RequireScopes
+```
+
+It is more secure than simply skipping the addition of a Grant object because it consumes the slot reserved for Grants in the request context. Thus, it locks the request down explicitly and irrevocably. 
+
+It can be added like so:
+
+```
+context.add(Grant.deny());
+```
+
+## Grant Types are Independent
+
+Just because a request is authorized does not mean it has a clearence or some scopes.
+Just because a request has a certain clearence does not mean it is authorized or has a scope.
+Just because a request has some particular scopes does not mean it is authorized or has a clearence.
+
+Just because a request has a Grant does not mean that it contains a certificate!
