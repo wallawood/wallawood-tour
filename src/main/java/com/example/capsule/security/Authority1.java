@@ -20,7 +20,7 @@ public class Authority1 implements RequestInterceptor {
     }
 
     String cn = CertUtil.name(cert).toLowerCase();
-    Grant grant = Grant.deny();
+    Grant grant = null;
 
     if (cn.equalsIgnoreCase("a")) {
       grant = Grant.authorized();
@@ -34,7 +34,9 @@ public class Authority1 implements RequestInterceptor {
       grant = Grant.scopes("read", "write");
     }
 
-    context.add(grant);
+    if (grant != null) {
+      context.add(grant);
+    }
     return Optional.empty();
   }
 }
